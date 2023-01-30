@@ -24,6 +24,7 @@ public class Stop {
     @Column(name = "STP_stop_name", nullable = false)
     private String stopName;
 
+    @JoinColumn(name = "ZNE_zone_id")
     @ManyToOne
     private Zone zone;
 

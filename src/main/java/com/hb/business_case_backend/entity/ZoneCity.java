@@ -21,9 +21,11 @@ public class ZoneCity {
     @Column(name = "ZNC_zone_city_id", nullable = false)
     private UUID zoneCityId;
 
+    @JoinColumn(name = "ZNE_zone_id")
     @ManyToOne
     private Zone zone;
 
+    @JoinColumn(name = "CTY_city_id")
     @ManyToOne
     private City city;
 
