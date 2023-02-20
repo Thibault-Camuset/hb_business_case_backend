@@ -2,8 +2,8 @@ package com.hb.business_case_backend.fixture;
 
 import com.hb.business_case_backend.entity.City;
 import com.hb.business_case_backend.entity.Country;
-import com.hb.business_case_backend.repository.CityRepository;
-import com.hb.business_case_backend.repository.CountryRepository;
+import com.hb.business_case_backend.service.CityService;
+import com.hb.business_case_backend.service.CountryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,21 +13,19 @@ import java.util.List;
 @Component
 public class CityFixture {
 
-    private CityRepository cityRepository;
-    private CountryRepository countryRepository;
+    private CityService cityService;
+    private CountryService countryService;
 
     public void addCities() {
 
-        List<City> cities = cityRepository.findAll();
+        List<City> cities = cityService.getCities();
 
         if(cities.isEmpty()) {
 
-            Country country = countryRepository.findById("FRA").orElse(null);
+            Country country = countryService.getCountry("FRA");
 
-            City city = new City("63000","Clermont-Ferrand",country);
-            cityRepository.save(city);
-            City city2 = new City("63400","Chamalières",country);
-            cityRepository.save(city2);
+            cityService.createCity("63000", "Clermont-Ferrand", country);
+            cityService.createCity("63400", "Chamalière", country);
         }
 
     }

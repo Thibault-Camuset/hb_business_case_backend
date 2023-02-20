@@ -1,10 +1,8 @@
 package com.hb.business_case_backend.service.impl;
 
 import com.hb.business_case_backend.entity.City;
-import com.hb.business_case_backend.entity.Stop;
 import com.hb.business_case_backend.entity.Zone;
 import com.hb.business_case_backend.entity.ZoneCity;
-import com.hb.business_case_backend.repository.StopRepository;
 import com.hb.business_case_backend.repository.ZoneCityRepository;
 import com.hb.business_case_backend.service.ZoneCityService;
 import lombok.AllArgsConstructor;

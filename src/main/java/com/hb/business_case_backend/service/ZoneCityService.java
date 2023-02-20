@@ -3,7 +3,6 @@ package com.hb.business_case_backend.service;
 import com.hb.business_case_backend.entity.City;
 import com.hb.business_case_backend.entity.ZoneCity;
 import com.hb.business_case_backend.entity.Zone;
-import com.hb.business_case_backend.entity.ZoneCity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
