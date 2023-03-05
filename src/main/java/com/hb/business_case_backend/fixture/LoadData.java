@@ -11,11 +11,13 @@ public class LoadData {
 
     private CountryFixture countryFixture;
     private CityFixture cityFixture;
+    private RoleFixture roleFixture;
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadInitialData() {
         this.countryFixture.addCountries();
         this.cityFixture.addCities();
+        this.roleFixture.addRoles();
     }
 
 }
