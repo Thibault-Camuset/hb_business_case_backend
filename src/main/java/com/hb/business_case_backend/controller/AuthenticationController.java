@@ -1,8 +1,6 @@
 package com.hb.business_case_backend.controller;
 
-import com.hb.business_case_backend.authentication.AuthenticationRequest;
 import com.hb.business_case_backend.authentication.AuthenticationResponse;
-import com.hb.business_case_backend.authentication.RegisterRequest;
 import com.hb.business_case_backend.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    private final AuthenticationService service;
+    private final AuthenticationService authService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
@@ -22,14 +20,14 @@ public class AuthenticationController {
             @RequestParam String userEmail,
             @RequestParam String userPassword
     ) {
-        return ResponseEntity.ok(service.register(userLastName, userFirstName, userEmail, userPassword));
+        return ResponseEntity.ok(authService.register(userLastName, userFirstName, userEmail, userPassword));
     }
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestParam String userEmail,
             @RequestParam String userPassword
     ) {
-        return ResponseEntity.ok(service.authenticate(userEmail, userPassword));
+        return ResponseEntity.ok(authService.authenticate(userEmail, userPassword));
     }
 
 }

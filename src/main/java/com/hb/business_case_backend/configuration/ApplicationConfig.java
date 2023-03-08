@@ -17,11 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository repository;
+    private final UserRepository userRepository;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> repository.findByUserEmail(username)
+        return username -> userRepository.findByUserEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
     }
 

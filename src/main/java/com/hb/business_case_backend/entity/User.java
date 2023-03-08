@@ -46,7 +46,8 @@ public class User implements UserDetails {
     @JoinColumn(name = "USR_city")
     private City userCity;
 
-    @ManyToOne@JoinColumn(name= "USR_role")
+    @ManyToOne
+    @JoinColumn(name= "USR_role")
     private Role userRole;
 
     public User(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city) {

@@ -15,6 +15,7 @@ public class LoadData {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadInitialData() {
+
         this.countryFixture.addCountries();
         this.cityFixture.addCities();
         this.roleFixture.addRoles();

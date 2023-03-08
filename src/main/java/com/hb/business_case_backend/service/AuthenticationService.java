@@ -1,14 +1,11 @@
 package com.hb.business_case_backend.service;
 
-import com.hb.business_case_backend.authentication.AuthenticationRequest;
 import com.hb.business_case_backend.authentication.AuthenticationResponse;
-import com.hb.business_case_backend.authentication.RegisterRequest;
 import com.hb.business_case_backend.entity.Token;
 import com.hb.business_case_backend.repository.RoleRepository;
 import com.hb.business_case_backend.repository.TokenRepository;
 import com.hb.business_case_backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,8 +26,8 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(String userLastName, String userFirstName, String userEmail, String userPassword) {
         var user = User.builder()
-                .userFirstName(userLastName)
-                .userLastName(userFirstName)
+                .userFirstName(userFirstName)
+                .userLastName(userLastName)
                 .userEmail(userEmail)
                 .userPassword(passwordEncoder.encode(userPassword))
                 .userRole(roleRepository.findOneByRoleName("USER"))
