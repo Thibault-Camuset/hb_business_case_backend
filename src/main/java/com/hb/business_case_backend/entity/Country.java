@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +17,8 @@ import lombok.Setter;
 @Table(name = "CNT_Country")
 public class Country {
 
-
-    // On ne génère pas d'id automatiquement, puisque l'on va manuellement utiliser un code pour réprésenter le pays
+    // On ne génère pas d'id automatiquement, puisque l'on va manuellement utiliser
+    // un code pour réprésenter le pays
     @Id
     @Column(name = "CNT_country_code", nullable = false, length = 10)
     private String id;

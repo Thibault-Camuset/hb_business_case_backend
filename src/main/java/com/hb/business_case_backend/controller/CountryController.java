@@ -3,6 +3,7 @@ package com.hb.business_case_backend.controller;
 import com.hb.business_case_backend.entity.Country;
 import com.hb.business_case_backend.service.CountryService;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/countries")
@@ -31,7 +33,7 @@ public class CountryController {
 
     // Route pour ajouter un nouveau pays
     @PostMapping("/{id}/{countryName}")
-    @ResponseStatus(code=HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Country countryPost(@PathVariable String id, @PathVariable String countryName) {
         return countryService.createCountry(id, countryName);
     }

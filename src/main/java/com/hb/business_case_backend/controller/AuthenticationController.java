@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -18,15 +19,15 @@ public class AuthenticationController {
             @RequestParam String userLastName,
             @RequestParam String userFirstName,
             @RequestParam String userEmail,
-            @RequestParam String userPassword
-    ) {
+            @RequestParam String userPassword) {
+        System.out.println("ResisterAttempt");
         return ResponseEntity.ok(authService.register(userLastName, userFirstName, userEmail, userPassword));
     }
+
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestParam String userEmail,
-            @RequestParam String userPassword
-    ) {
+            @RequestParam String userPassword) {
         return ResponseEntity.ok(authService.authenticate(userEmail, userPassword));
     }
 

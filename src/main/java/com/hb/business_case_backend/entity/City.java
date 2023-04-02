@@ -1,13 +1,11 @@
 package com.hb.business_case_backend.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import java.util.UUID;
 
@@ -19,7 +17,8 @@ import java.util.UUID;
 @Table(name = "CTY_City")
 public class City {
 
-    // On ne génère pas d'id automatiquement, puisque l'on va manuellement utiliser un code pour réprésenter le pays
+    // On ne génère pas d'id automatiquement, puisque l'on va manuellement utiliser
+    // un code pour réprésenter le pays
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.UUID)
