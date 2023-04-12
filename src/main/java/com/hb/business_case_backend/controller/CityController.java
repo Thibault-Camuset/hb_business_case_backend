@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/cities")
@@ -23,13 +24,15 @@ public class CityController {
     }
 
     @PostMapping("/{postalCode}/{cityName}/{country}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public City cityPost(@PathVariable String postalCode, @PathVariable String cityName, @PathVariable Country country) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public City cityPost(@PathVariable String postalCode, @PathVariable String cityName,
+            @PathVariable Country country) {
         return cityService.createCity(postalCode, cityName, country);
     }
 
     @PatchMapping("/{cityId}/{postalCode}/{cityName}/{country}")
-    public City cityPatch(@PathVariable UUID cityId, @PathVariable String postalCode, @PathVariable String cityName, @PathVariable Country country) {
+    public City cityPatch(@PathVariable UUID cityId, @PathVariable String postalCode, @PathVariable String cityName,
+            @PathVariable Country country) {
         return cityService.updateCity(cityId, postalCode, cityName, country);
     }
 

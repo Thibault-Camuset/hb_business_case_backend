@@ -20,6 +20,11 @@ public class UserController {
 
     private UserService userService;
 
+    @GetMapping("/byEmail/{userEmail}")
+    public User userByEmail(@PathVariable String userEmail) {
+        return userService.getUserByEmail(userEmail);
+    }
+
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success"),
             @ApiResponse(responseCode = "403", description = "No Access"),

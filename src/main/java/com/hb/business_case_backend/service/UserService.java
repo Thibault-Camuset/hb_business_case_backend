@@ -14,9 +14,13 @@ public interface UserService {
 
     User getUser(UUID userId);
 
-    User createUser(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city);
+    User getUserByEmail(String userEmail);
 
-    User updateUser(UUID userId, String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city);
+    User createUser(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone,
+            String userAddress, City city);
+
+    User updateUser(UUID userId, String userEmail, String userPassword, String userFirstName, String userLastName,
+            String userPhone, String userAddress, City city);
 
     boolean deleteUser(UUID userId);
 }

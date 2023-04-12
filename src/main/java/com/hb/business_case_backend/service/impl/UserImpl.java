@@ -27,15 +27,22 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public User createUser(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city) {
+    public User getUserByEmail(String userEmail) {
+        return userRepository.findByUserEmail(userEmail).orElse(null);
+    }
+
+    @Override
+    public User createUser(String userEmail, String userPassword, String userFirstName, String userLastName,
+            String userPhone, String userAddress, City city) {
         User user = new User(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress, city);
         return userRepository.save(user);
     }
 
     @Override
-    public User updateUser(UUID userId, String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city) {
+    public User updateUser(UUID userId, String userEmail, String userPassword, String userFirstName,
+            String userLastName, String userPhone, String userAddress, City city) {
         User user = userRepository.findById(userId).orElse(null);
-        if(user != null) {
+        if (user != null) {
             user.setUserEmail(userEmail);
             user.setUserPassword(userPassword);
             user.setUserFirstName(userFirstName);
@@ -50,7 +57,7 @@ public class UserImpl implements UserService {
     @Override
     public boolean deleteUser(UUID userId) {
         User user = userRepository.findById(userId).orElse(null);
-        if(user != null) {
+        if (user != null) {
             return false;
 
         } else {
