@@ -12,6 +12,8 @@ public class LoadData {
     private CountryFixture countryFixture;
     private CityFixture cityFixture;
     private RoleFixture roleFixture;
+    private ZoneFixture zoneFixture;
+    private TimeSlotFixture timeSlotFixture;
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadInitialData() {
@@ -19,6 +21,8 @@ public class LoadData {
         this.countryFixture.addCountries();
         this.cityFixture.addCities();
         this.roleFixture.addRoles();
+        this.zoneFixture.addZones();
+        this.timeSlotFixture.addTimeSlots();
     }
 
 }

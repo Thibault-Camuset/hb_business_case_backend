@@ -27,9 +27,14 @@ public class CityImpl implements CityService {
     }
 
     @Override
+    public City getCityByPostalCode(String postalCode) {
+        return cityRepository.findByPostalCode(postalCode).orElse(null);
+    }
+
+    @Override
     public City createCity(String postalCode, String cityName, Country country) {
 
-        City city = new City(postalCode,cityName, country);
+        City city = new City(postalCode, cityName, country);
         return cityRepository.save(city);
     }
 
@@ -37,7 +42,7 @@ public class CityImpl implements CityService {
     public City updateCity(UUID cityId, String postalCode, String cityName, Country country) {
 
         City city = cityRepository.findById(cityId).orElse(null);
-        if(city != null) {
+        if (city != null) {
             city.setPostalCode(postalCode);
             city.setCityName(cityName);
             city.setCountry(country);
@@ -50,7 +55,7 @@ public class CityImpl implements CityService {
     public boolean deleteCity(UUID cityId) {
 
         City city = cityRepository.findById(cityId).orElse(null);
-        if(city == null) {
+        if (city == null) {
             return false;
         } else {
             cityRepository.deleteById(cityId);

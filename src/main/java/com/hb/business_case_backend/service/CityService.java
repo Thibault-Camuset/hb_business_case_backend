@@ -14,6 +14,8 @@ public interface CityService {
 
     City getCity(UUID cityId);
 
+    City getCityByPostalCode(String postalCode);
+
     City createCity(String postalCode, String cityName, Country country);
 
     City updateCity(UUID cityId, String postalCode, String cityName, Country country);
