@@ -24,26 +24,32 @@ public class AdZoneTimeImpl implements AdZoneTimeService {
     }
 
     @Override
+    public List<AdZoneTime> getAdZoneTimesByAd(Ad ad) {
+        return adZoneTimeRepository.findByAd(ad);
+    }
+
+    @Override
     public AdZoneTime getAdZoneTime(UUID cityId) {
         return adZoneTimeRepository.findById(cityId).orElse(null);
     }
 
     @Override
-    public AdZoneTime createAdZoneTime(Ad ad, Zone zone, TimeSlot time, Double price) {
+    public AdZoneTime createAdZoneTime(Ad ad, Zone zone, TimeSlot time) {
 
-        AdZoneTime adZoneTime = new AdZoneTime(ad, zone, time, price);
+        AdZoneTime adZoneTime = new AdZoneTime(ad, zone, time,
+                zone.getZoneBasePrice() * time.getTimeSlotPriceMultiplier());
         return adZoneTimeRepository.save(adZoneTime);
     }
 
     @Override
-    public AdZoneTime updateAdZoneTime(UUID adZoneTimeId, Ad ad, Zone zone, TimeSlot time, Double price) {
+    public AdZoneTime updateAdZoneTime(UUID adZoneTimeId, Ad ad, Zone zone, TimeSlot time) {
 
         AdZoneTime adZoneTime = adZoneTimeRepository.findById(adZoneTimeId).orElse(null);
         if (adZoneTime != null) {
             adZoneTime.setAd(ad);
             adZoneTime.setZone(zone);
             adZoneTime.setTime(time);
-            adZoneTime.setPrice(price);
+            adZoneTime.setPrice(zone.getZoneBasePrice() * time.getTimeSlotPriceMultiplier());
         }
         return adZoneTimeRepository.save(adZoneTime);
 

@@ -47,10 +47,11 @@ public class User implements UserDetails {
     private City userCity;
 
     @ManyToOne
-    @JoinColumn(name= "USR_role")
+    @JoinColumn(name = "USR_role")
     private Role userRole;
 
-    public User(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone, String userAddress, City city) {
+    public User(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone,
+            String userAddress, City city, Role role) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userFirstName = userFirstName;
@@ -58,6 +59,7 @@ public class User implements UserDetails {
         this.userPhone = userPhone;
         this.userAddress = userAddress;
         this.userCity = city;
+        this.userRole = role;
     }
 
     // Méthodes nécessaires à l'implémentation de UserDetails

@@ -15,11 +15,13 @@ public interface AdZoneTimeService {
 
     List<AdZoneTime> getAdZoneTimes();
 
+    List<AdZoneTime> getAdZoneTimesByAd(Ad ad);
+
     AdZoneTime getAdZoneTime(UUID dZoneTimeId);
 
-    AdZoneTime createAdZoneTime(Ad ad, Zone zone, TimeSlot time, Double price);
+    AdZoneTime createAdZoneTime(Ad ad, Zone zone, TimeSlot time);
 
-    AdZoneTime updateAdZoneTime(UUID adZoneTimeId, Ad ad, Zone zone, TimeSlot time, Double price);
+    AdZoneTime updateAdZoneTime(UUID adZoneTimeId, Ad ad, Zone zone, TimeSlot time);
 
     boolean deleteAdZoneTime(UUID adZoneTimeId);
 

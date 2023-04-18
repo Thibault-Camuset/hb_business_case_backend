@@ -12,6 +12,7 @@ public class LoadData {
     private CountryFixture countryFixture;
     private CityFixture cityFixture;
     private RoleFixture roleFixture;
+    private UserFixture userFixture;
     private ZoneFixture zoneFixture;
     private TimeSlotFixture timeSlotFixture;
 
@@ -21,6 +22,7 @@ public class LoadData {
         this.countryFixture.addCountries();
         this.cityFixture.addCities();
         this.roleFixture.addRoles();
+        this.userFixture.addUsers();
         this.zoneFixture.addZones();
         this.timeSlotFixture.addTimeSlots();
     }

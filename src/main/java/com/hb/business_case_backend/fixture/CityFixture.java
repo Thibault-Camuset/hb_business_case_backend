@@ -20,7 +20,7 @@ public class CityFixture {
 
         List<City> cities = cityService.getCities();
 
-        if(cities.isEmpty()) {
+        if (cities.isEmpty()) {
 
             Country country = countryService.getCountry("FRA");
 

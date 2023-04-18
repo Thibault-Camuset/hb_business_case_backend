@@ -4,6 +4,7 @@ import com.hb.business_case_backend.entity.Ad;
 import com.hb.business_case_backend.entity.AdZoneTime;
 import com.hb.business_case_backend.entity.TimeSlot;
 import com.hb.business_case_backend.entity.Zone;
+import com.hb.business_case_backend.service.AdService;
 import com.hb.business_case_backend.service.AdZoneTimeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,10 +16,11 @@ import java.util.UUID;
 @CrossOrigin
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/addZoneTimes")
+@RequestMapping("/api/adZoneTimes")
 public class AdZoneTimeController {
 
     private AdZoneTimeService addZoneTimeService;
+    private AdService adService;
 
     @GetMapping("/{adZoneTimeId}")
     public AdZoneTime adZoneTimeGet(@PathVariable UUID adZoneTimeId) {
@@ -30,9 +32,8 @@ public class AdZoneTimeController {
     public AdZoneTime adZoneTimePost(
             @PathVariable Ad ad,
             @PathVariable Zone zone,
-            @PathVariable TimeSlot time,
-            @PathVariable Double price) {
-        return addZoneTimeService.createAdZoneTime(ad, zone, time, price);
+            @PathVariable TimeSlot time) {
+        return addZoneTimeService.createAdZoneTime(ad, zone, time);
     }
 
     @PatchMapping("/{adZoneTimeId}/{ad}/{zone}/{time}")
@@ -40,14 +41,22 @@ public class AdZoneTimeController {
             @PathVariable UUID adZoneTimeId,
             @PathVariable Ad ad,
             @PathVariable Zone zone,
-            @PathVariable TimeSlot time,
-            @PathVariable Double price) {
-        return addZoneTimeService.updateAdZoneTime(adZoneTimeId, ad, zone, time, price);
+            @PathVariable TimeSlot time) {
+        return addZoneTimeService.updateAdZoneTime(adZoneTimeId, ad, zone, time);
     }
 
     @DeleteMapping("/{adZoneTimeId}")
     public boolean adZoneTimeDelete(@PathVariable UUID adZoneTimeId) {
         return addZoneTimeService.deleteAdZoneTime(adZoneTimeId);
+    }
+
+    @GetMapping("/byAdId/{adId}")
+    public List<AdZoneTime> adZoneTimesGetByAdId(@PathVariable UUID adId) {
+
+        System.out.println(adId);
+
+        Ad ad = this.adService.getAd(adId);
+        return addZoneTimeService.getAdZoneTimesByAd(ad);
     }
 
     @GetMapping("")

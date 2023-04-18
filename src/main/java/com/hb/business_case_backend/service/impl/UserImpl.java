@@ -1,6 +1,7 @@
 package com.hb.business_case_backend.service.impl;
 
 import com.hb.business_case_backend.entity.City;
+import com.hb.business_case_backend.entity.Role;
 import com.hb.business_case_backend.entity.User;
 import com.hb.business_case_backend.repository.UserRepository;
 import com.hb.business_case_backend.service.UserService;
@@ -33,14 +34,14 @@ public class UserImpl implements UserService {
 
     @Override
     public User createUser(String userEmail, String userPassword, String userFirstName, String userLastName,
-            String userPhone, String userAddress, City city) {
-        User user = new User(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress, city);
+            String userPhone, String userAddress, City city, Role role) {
+        User user = new User(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress, city, role);
         return userRepository.save(user);
     }
 
     @Override
     public User updateUser(UUID userId, String userEmail, String userPassword, String userFirstName,
-            String userLastName, String userPhone, String userAddress, City city) {
+            String userLastName, String userPhone, String userAddress, City city, Role role) {
         User user = userRepository.findById(userId).orElse(null);
         if (user != null) {
             user.setUserEmail(userEmail);
@@ -50,6 +51,7 @@ public class UserImpl implements UserService {
             user.setUserPhone(userPhone);
             user.setUserAddress(userAddress);
             user.setUserCity(city);
+            user.setUserRole(role);
         }
         return userRepository.save(user);
     }

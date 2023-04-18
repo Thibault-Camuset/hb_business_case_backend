@@ -23,8 +23,8 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-
-    public AuthenticationResponse register(String userLastName, String userFirstName, String userEmail, String userPassword) {
+    public AuthenticationResponse register(String userLastName, String userFirstName, String userEmail,
+            String userPassword) {
         var user = User.builder()
                 .userFirstName(userFirstName)
                 .userLastName(userLastName)
@@ -44,9 +44,7 @@ public class AuthenticationService {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         userEmail,
-                        userPassword
-                )
-        );
+                        userPassword));
         var user = userRepository.findByUserEmail(userEmail)
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);

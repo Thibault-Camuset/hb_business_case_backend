@@ -30,15 +30,25 @@ public class TimeSlotFixture {
             Date debut = calendar.getTime();
 
             calendar.set(Calendar.HOUR_OF_DAY, 17);
-            calendar.set(Calendar.MINUTE, 0);
-            calendar.set(Calendar.SECOND, 0);
             Date fin = calendar.getTime();
 
             timeSlotService.createTimeSlot(
                     "Journée",
                     debut,
                     fin,
-                    1.5);
+                    2.5);
+
+            calendar.set(Calendar.HOUR_OF_DAY, 17);
+            debut = calendar.getTime();
+
+            calendar.set(Calendar.HOUR_OF_DAY, 23);
+            fin = calendar.getTime();
+
+            timeSlotService.createTimeSlot(
+                    "Soirée",
+                    debut,
+                    fin,
+                    2.0);
 
         }
 
