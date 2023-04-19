@@ -44,8 +44,8 @@ public class AdController {
     }
 
     @DeleteMapping("/{adId}")
-    public boolean addDelete(@PathVariable UUID addId) {
-        return adService.deleteAd(addId);
+    public boolean addDelete(@PathVariable UUID adId) {
+        return adService.deleteAd(adId);
     }
 
     @GetMapping("/byUser/{userEmail}")

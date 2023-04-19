@@ -32,6 +32,12 @@ public class Ad {
     @Column(name = "AD_description", nullable = false)
     private String adDescription;
 
+    @Column(name = "AD_status", nullable = false)
+    private String adStatus;
+
+    @Column(name = "AD_isDeleted", nullable = false)
+    private boolean adIsDeleted;
+
     @ManyToOne
     @JoinColumn(name = "AD_author")
     private User author;

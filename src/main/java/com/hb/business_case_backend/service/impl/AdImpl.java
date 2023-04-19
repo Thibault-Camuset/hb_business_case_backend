@@ -41,6 +41,7 @@ public class AdImpl implements AdService {
     public Ad createAd(String adTitle, String adImage, String adDescription, User author) {
 
         Ad ad = new Ad(adTitle, adImage, adDescription, author);
+        ad.setAdStatus("Pending");
         return adRepository.save(ad);
     }
 
@@ -55,7 +56,6 @@ public class AdImpl implements AdService {
             ad.setAuthor(author);
         }
         return adRepository.save(ad);
-
     }
 
     @Override
@@ -65,7 +65,9 @@ public class AdImpl implements AdService {
         if (ad == null) {
             return false;
         } else {
-            adRepository.deleteById(adId);
+            ad.setAdIsDeleted(true);
+            ad.setAdStatus("Canceled");
+            adRepository.save(ad);
             return true;
         }
     }
