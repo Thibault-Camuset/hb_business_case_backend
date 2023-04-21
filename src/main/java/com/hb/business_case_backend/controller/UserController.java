@@ -1,5 +1,6 @@
 package com.hb.business_case_backend.controller;
 
+import com.hb.business_case_backend.dto.UserDTO;
 import com.hb.business_case_backend.entity.City;
 import com.hb.business_case_backend.entity.Role;
 import com.hb.business_case_backend.entity.User;
@@ -7,6 +8,8 @@ import com.hb.business_case_backend.service.UserService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +24,13 @@ public class UserController {
 
     private UserService userService;
 
+    private ModelMapper modelMapper;
+
     @GetMapping("/byEmail/{userEmail}")
-    public User userByEmail(@PathVariable String userEmail) {
-        return userService.getUserByEmail(userEmail);
+    public UserDTO userByEmail(@PathVariable String userEmail) {
+        User user = userService.getUserByEmail(userEmail);
+        UserDTO dto = modelMapper.map(user, UserDTO.class);
+        return dto;
     }
 
     @ApiResponses(value = {
@@ -44,7 +51,7 @@ public class UserController {
                 city, role);
     }
 
-    @PatchMapping("/{userId}/{userEmail}/{userPassword}/{userFirstName}/{userLastName}/{userPhone}/{userAddress}/{city}")
+    @PatchMapping("/{userId}/{userEmail}/{userPassword}/{userFirstName}/{userLastName}/{userPhone}/{userAddress}/{city}/{role}")
     public User userPatch(@PathVariable UUID userId, @PathVariable String userEmail, @PathVariable String userPassword,
             @PathVariable String userFirstName, @PathVariable String userLastName, @PathVariable String userPhone,
             @PathVariable String userAddress, @PathVariable City city, @PathVariable Role role) {

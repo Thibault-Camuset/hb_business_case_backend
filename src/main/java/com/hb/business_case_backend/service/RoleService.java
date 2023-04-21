@@ -13,6 +13,8 @@ public interface RoleService {
 
     Role getRole(UUID roleId);
 
+    Role getRoleByRoleName(String roleName);
+
     Role createRole(String roleName, String roleDescription);
 
     Role updateRole(UUID roleId, String roleName, String roleDescription);

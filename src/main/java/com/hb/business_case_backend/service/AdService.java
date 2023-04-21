@@ -21,6 +21,8 @@ public interface AdService {
 
     Ad updateAd(UUID adId, String adTitle, String adImage, String adDescription, User author);
 
+    boolean validateAd(UUID adId);
+
     boolean deleteAd(UUID adId);
 
 }

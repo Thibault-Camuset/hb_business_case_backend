@@ -28,8 +28,11 @@ public class AdImpl implements AdService {
     public List<Ad> getAdsByUser(String userEmail) {
 
         Optional<User> user = userRepository.findByUserEmail(userEmail);
-
-        return adRepository.findByAuthor(user.get());
+        if (user.isPresent() && user.get().getUserRole().getRoleName().equals("ADMIN")) {
+            return adRepository.findAll();
+        } else {
+            return adRepository.findByAuthor(user.get());
+        }
     }
 
     @Override
@@ -66,7 +69,20 @@ public class AdImpl implements AdService {
             return false;
         } else {
             ad.setAdIsDeleted(true);
-            ad.setAdStatus("Canceled");
+            ad.setAdStatus("Cancelled");
+            adRepository.save(ad);
+            return true;
+        }
+    }
+
+    @Override
+    public boolean validateAd(UUID adId) {
+
+        Ad ad = adRepository.findById(adId).orElse(null);
+        if (ad == null) {
+            return false;
+        } else {
+            ad.setAdStatus("Accepted");
             adRepository.save(ad);
             return true;
         }

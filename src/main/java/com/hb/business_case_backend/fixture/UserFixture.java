@@ -2,8 +2,8 @@ package com.hb.business_case_backend.fixture;
 
 import com.hb.business_case_backend.entity.Role;
 import com.hb.business_case_backend.entity.User;
-import com.hb.business_case_backend.repository.RoleRepository;
 import com.hb.business_case_backend.service.AuthenticationService;
+import com.hb.business_case_backend.service.RoleService;
 import com.hb.business_case_backend.service.UserService;
 import lombok.AllArgsConstructor;
 
@@ -17,7 +17,7 @@ public class UserFixture {
 
     private AuthenticationService authService;
     private UserService userService;
-    private RoleRepository roleRepository;
+    private RoleService roleService;
 
     public void addUsers() {
 
@@ -28,12 +28,12 @@ public class UserFixture {
             authService.register(
                     "Admin",
                     "Admin",
-                    "admin",
+                    "admin@gmail.com",
                     "admin");
 
-            Role role = roleRepository.findOneByRoleName("ADMIN");
+            Role role = roleService.getRoleByRoleName("ADMIN");
 
-            User admin = userService.getUserByEmail("admin");
+            User admin = userService.getUserByEmail("admin@gmail.com");
             admin.setUserRole(role);
             userService.updateUser(
                     admin.getUserId(),

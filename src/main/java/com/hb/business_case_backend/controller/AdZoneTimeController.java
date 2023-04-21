@@ -53,8 +53,6 @@ public class AdZoneTimeController {
     @GetMapping("/byAdId/{adId}")
     public List<AdZoneTime> adZoneTimesGetByAdId(@PathVariable UUID adId) {
 
-        System.out.println(adId);
-
         Ad ad = this.adService.getAd(adId);
         return addZoneTimeService.getAdZoneTimesByAd(ad);
     }

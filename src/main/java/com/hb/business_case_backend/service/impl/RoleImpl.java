@@ -13,7 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class RoleImpl implements RoleService {
 
-
     private final RoleRepository roleRepository;
 
     @Override
@@ -27,6 +26,11 @@ public class RoleImpl implements RoleService {
     }
 
     @Override
+    public Role getRoleByRoleName(String roleName) {
+        return roleRepository.findOneByRoleName(roleName);
+    }
+
+    @Override
     public Role createRole(String roleName, String roleDescription) {
         Role role = new Role(roleName, roleDescription);
         return roleRepository.save(role);
@@ -35,7 +39,7 @@ public class RoleImpl implements RoleService {
     @Override
     public Role updateRole(UUID roleId, String roleName, String roleDescription) {
         Role role = roleRepository.findById(roleId).orElse(null);
-        if(role != null) {
+        if (role != null) {
             role.setRoleDescription(roleDescription);
             role.setRoleName(roleName);
         }
@@ -45,7 +49,7 @@ public class RoleImpl implements RoleService {
     @Override
     public boolean deleteRole(UUID roleId) {
         Role role = roleRepository.findById(roleId).orElse(null);
-        if(role == null) {
+        if (role == null) {
             return false;
         } else {
             roleRepository.deleteById(roleId);

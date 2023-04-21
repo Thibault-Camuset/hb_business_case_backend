@@ -23,13 +23,13 @@ public class AdController {
         return adService.getAd(adId);
     }
 
-    @PostMapping("/{adTitle}/{adImage}/{adDescription}/{author}")
+    @PostMapping("/{adTitle}/{adDescription}/{author}")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Ad adPost(
             @PathVariable String adTitle,
-            @PathVariable String adImage,
             @PathVariable String adDescription,
-            @PathVariable User author) {
+            @PathVariable User author,
+            @RequestParam String adImage) {
         return adService.createAd(adTitle, adImage, adDescription, author);
     }
 
@@ -46,6 +46,11 @@ public class AdController {
     @DeleteMapping("/{adId}")
     public boolean addDelete(@PathVariable UUID adId) {
         return adService.deleteAd(adId);
+    }
+
+    @GetMapping("/accept/{adId}")
+    public boolean validateAd(@PathVariable UUID adId) {
+        return adService.validateAd(adId);
     }
 
     @GetMapping("/byUser/{userEmail}")

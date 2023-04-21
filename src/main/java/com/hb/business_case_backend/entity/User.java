@@ -6,6 +6,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +29,7 @@ public class User implements UserDetails {
     @Column(name = "USR_email", nullable = false)
     private String userEmail;
 
+    @JsonIgnore
     @Column(name = "USR_password", nullable = false)
     private String userPassword;
 
