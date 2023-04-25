@@ -23,13 +23,20 @@ public class StopController {
     }
 
     @PostMapping("/{stopName}/{zone}/{raspberryIp}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public Stop stopPost(@PathVariable String stopName, @PathVariable Zone zone, @PathVariable String raspberryIp) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Stop stopPost(
+            @PathVariable String stopName,
+            @PathVariable Zone zone,
+            @PathVariable String raspberryIp) {
         return stopService.createStop(stopName, zone, raspberryIp);
     }
 
     @PatchMapping("/{stopId}/{stopName}/{zone}/{raspberryIp}")
-    public Stop stopPatch(@PathVariable UUID stopId, @PathVariable String stopName, @PathVariable Zone zone, @PathVariable String raspberryIp) {
+    public Stop stopPatch(
+            @PathVariable UUID stopId,
+            @PathVariable String stopName,
+            @PathVariable Zone zone,
+            @PathVariable String raspberryIp) {
         return stopService.updateStop(stopId, stopName, zone, raspberryIp);
     }
 

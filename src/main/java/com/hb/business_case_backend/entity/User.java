@@ -53,8 +53,15 @@ public class User implements UserDetails {
     @JoinColumn(name = "USR_role")
     private Role userRole;
 
-    public User(String userEmail, String userPassword, String userFirstName, String userLastName, String userPhone,
-            String userAddress, City city, Role role) {
+    public User(
+            String userEmail,
+            String userPassword,
+            String userFirstName,
+            String userLastName,
+            String userPhone,
+            String userAddress,
+            City city,
+            Role role) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userFirstName = userFirstName;

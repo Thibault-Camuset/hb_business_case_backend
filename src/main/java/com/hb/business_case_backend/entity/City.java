@@ -37,7 +37,10 @@ public class City {
     @JoinColumn(name = "CNT_country_code")
     private Country country;
 
-    public City(String postalCode, String cityName, Country country) {
+    public City(
+            String postalCode,
+            String cityName,
+            Country country) {
         this.postalCode = postalCode;
         this.cityName = cityName;
         this.country = country;

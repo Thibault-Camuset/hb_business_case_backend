@@ -38,7 +38,11 @@ public class AdZoneTime {
     @JoinColumn(name = "AZT_time_id")
     private TimeSlot time;
 
-    public AdZoneTime(Ad ad, Zone zone, TimeSlot time, Double price) {
+    public AdZoneTime(
+            Ad ad,
+            Zone zone,
+            TimeSlot time,
+            Double price) {
         this.ad = ad;
         this.zone = zone;
         this.time = time;

@@ -42,7 +42,11 @@ public class Ad {
     @JoinColumn(name = "AD_author")
     private User author;
 
-    public Ad(String adTitle, String adImage, String adDescription, User author) {
+    public Ad(
+            String adTitle,
+            String adImage,
+            String adDescription,
+            User author) {
         this.adTitle = adTitle;
         this.adImage = adImage;
         this.adDescription = adDescription;

@@ -30,17 +30,26 @@ public class AdController {
             @PathVariable String adDescription,
             @PathVariable User author,
             @RequestParam String adImage) {
-        return adService.createAd(adTitle, adImage, adDescription, author);
+        return adService.createAd(
+                adTitle,
+                adImage,
+                adDescription,
+                author);
     }
 
-    @PatchMapping("/{adId}/{adTitle}/{adImage}/{adDescription}/{author}")
+    @PatchMapping("/{adId}/{adTitle}/{adDescription}/{author}")
     public Ad adPatch(
             @PathVariable UUID adId,
             @PathVariable String adTitle,
-            @PathVariable String adImage,
             @PathVariable String adDescription,
-            @PathVariable User author) {
-        return adService.updateAd(adId, adTitle, adImage, adDescription, author);
+            @PathVariable User author,
+            @RequestParam String adImage) {
+        return adService.updateAd(
+                adId,
+                adTitle,
+                adImage,
+                adDescription,
+                author);
     }
 
     @DeleteMapping("/{adId}")

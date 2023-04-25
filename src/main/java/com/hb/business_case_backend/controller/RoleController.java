@@ -22,13 +22,18 @@ public class RoleController {
     }
 
     @PostMapping("/{roleName}/{roleDescription}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public Role rolePost(@PathVariable String roleName, @PathVariable String roleDescription) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Role rolePost(
+            @PathVariable String roleName,
+            @PathVariable String roleDescription) {
         return roleService.createRole(roleName, roleDescription);
     }
 
     @PatchMapping("/{roleId}/{roleName}/{roleDescription}")
-    public Role rolePatch(@PathVariable UUID roleId, @PathVariable String roleName, @PathVariable String roleDescription) {
+    public Role rolePatch(
+            @PathVariable UUID roleId,
+            @PathVariable String roleName,
+            @PathVariable String roleDescription) {
         return roleService.updateRole(roleId, roleName, roleDescription);
     }
 

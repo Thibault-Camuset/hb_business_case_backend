@@ -41,7 +41,11 @@ public class AdImpl implements AdService {
     }
 
     @Override
-    public Ad createAd(String adTitle, String adImage, String adDescription, User author) {
+    public Ad createAd(
+            String adTitle,
+            String adImage,
+            String adDescription,
+            User author) {
 
         Ad ad = new Ad(adTitle, adImage, adDescription, author);
         ad.setAdStatus("Pending");
@@ -49,7 +53,12 @@ public class AdImpl implements AdService {
     }
 
     @Override
-    public Ad updateAd(UUID adId, String adTitle, String adImage, String adDescription, User author) {
+    public Ad updateAd(
+            UUID adId,
+            String adTitle,
+            String adImage,
+            String adDescription,
+            User author) {
 
         Ad ad = adRepository.findById(adId).orElse(null);
         if (ad != null) {

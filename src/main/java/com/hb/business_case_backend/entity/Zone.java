@@ -27,7 +27,12 @@ public class Zone {
     @Column(name = "ZNE_zone_base_price", nullable = false)
     private Double zoneBasePrice;
 
-    public Zone(String zoneName, Double zoneBasePrice) {
+    @Column(name = "ZNE_zone_is_deleted", nullable = false)
+    private Boolean zoneIsDeleted = false;
+
+    public Zone(
+            String zoneName,
+            Double zoneBasePrice) {
         this.zoneName = zoneName;
         this.zoneBasePrice = zoneBasePrice;
     }

@@ -22,13 +22,18 @@ public class ZoneController {
     }
 
     @PostMapping("/{zoneName}/{zoneBasePrice}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public Zone zonePost(@PathVariable String zoneName, @PathVariable Double zoneBasePrice) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Zone zonePost(
+            @PathVariable String zoneName,
+            @PathVariable Double zoneBasePrice) {
         return zoneService.createZone(zoneName, zoneBasePrice);
     }
 
     @PatchMapping("/{zoneId}/{zoneName}/{zoneBasePrice}")
-    public Zone zonePatch(@PathVariable UUID zoneId, @PathVariable String zoneName, @PathVariable Double zoneBasePrice) {
+    public Zone zonePatch(
+            @PathVariable UUID zoneId,
+            @PathVariable String zoneName,
+            @PathVariable Double zoneBasePrice) {
         return zoneService.updateZone(zoneId, zoneName, zoneBasePrice);
     }
 

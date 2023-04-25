@@ -34,7 +34,10 @@ public class AdZoneTimeImpl implements AdZoneTimeService {
     }
 
     @Override
-    public AdZoneTime createAdZoneTime(Ad ad, Zone zone, TimeSlot time) {
+    public AdZoneTime createAdZoneTime(
+            Ad ad,
+            Zone zone,
+            TimeSlot time) {
 
         AdZoneTime adZoneTime = new AdZoneTime(ad, zone, time,
                 zone.getZoneBasePrice() * time.getTimeSlotPriceMultiplier());
@@ -42,7 +45,11 @@ public class AdZoneTimeImpl implements AdZoneTimeService {
     }
 
     @Override
-    public AdZoneTime updateAdZoneTime(UUID adZoneTimeId, Ad ad, Zone zone, TimeSlot time) {
+    public AdZoneTime updateAdZoneTime(
+            UUID adZoneTimeId,
+            Ad ad,
+            Zone zone,
+            TimeSlot time) {
 
         AdZoneTime adZoneTime = adZoneTimeRepository.findById(adZoneTimeId).orElse(null);
         if (adZoneTime != null) {

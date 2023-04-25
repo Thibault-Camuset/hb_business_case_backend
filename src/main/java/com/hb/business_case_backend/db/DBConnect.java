@@ -29,11 +29,7 @@ public class DBConnect {
 
         }
 
-
     }
-
-
-
 
     public static void closeAll(PreparedStatement psmt, ResultSet rs) {
 
@@ -45,8 +41,6 @@ public class DBConnect {
 
         }
 
-
-
         try {
 
             psmt.close();
@@ -54,8 +48,6 @@ public class DBConnect {
         } catch (Exception e) {
 
         }
-
-
 
     }
 
@@ -69,6 +61,5 @@ public class DBConnect {
 
         }
     }
-
 
 }

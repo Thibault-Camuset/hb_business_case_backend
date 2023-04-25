@@ -44,19 +44,47 @@ public class UserController {
 
     @PostMapping("/{userEmail}/{userPassword}/{userFirstName}/{userLastName}/{userPhone}/{userAddress}/{city}/{role}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public User userPost(@PathVariable String userEmail, @PathVariable String userPassword,
-            @PathVariable String userFirstName, @PathVariable String userLastName, @PathVariable String userPhone,
-            @PathVariable String userAddress, @PathVariable City city, @PathVariable Role role) {
-        return userService.createUser(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress,
-                city, role);
+    public User userPost(
+            @PathVariable String userEmail,
+            @PathVariable String userPassword,
+            @PathVariable String userFirstName,
+            @PathVariable String userLastName,
+            @PathVariable String userPhone,
+            @PathVariable String userAddress,
+            @PathVariable City city,
+            @PathVariable Role role) {
+
+        return userService.createUser(
+                userEmail,
+                userPassword,
+                userFirstName,
+                userLastName,
+                userPhone,
+                userAddress,
+                city,
+                role);
     }
 
     @PatchMapping("/{userId}/{userEmail}/{userPassword}/{userFirstName}/{userLastName}/{userPhone}/{userAddress}/{city}/{role}")
-    public User userPatch(@PathVariable UUID userId, @PathVariable String userEmail, @PathVariable String userPassword,
-            @PathVariable String userFirstName, @PathVariable String userLastName, @PathVariable String userPhone,
-            @PathVariable String userAddress, @PathVariable City city, @PathVariable Role role) {
-        return userService.updateUser(userId, userEmail, userPassword, userFirstName, userLastName, userPhone,
-                userAddress, city, role);
+    public User userPatch(
+            @PathVariable UUID userId,
+            @PathVariable String userEmail,
+            @PathVariable String userPassword,
+            @PathVariable String userFirstName,
+            @PathVariable String userLastName,
+            @PathVariable String userPhone,
+            @PathVariable String userAddress,
+            @PathVariable City city,
+            @PathVariable Role role) {
+        return userService.updateUser(
+                userId, userEmail,
+                userPassword,
+                userFirstName,
+                userLastName,
+                userPhone,
+                userAddress,
+                city,
+                role);
     }
 
     @DeleteMapping("/{userId}")

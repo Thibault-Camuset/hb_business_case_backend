@@ -17,7 +17,9 @@ public class ZoneImpl implements ZoneService {
 
     @Override
     public List<Zone> getZones() {
-        return zoneRepository.findAll();
+        List<Zone> zones = zoneRepository.findAll();
+        zones.removeIf(zone -> zone.getZoneIsDeleted());
+        return zones;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class ZoneImpl implements ZoneService {
     public Zone updateZone(UUID zoneId, String zoneName, Double zoneBasePrice) {
 
         Zone zone = zoneRepository.findById(zoneId).orElse(null);
-        if(zone != null) {
+        if (zone != null) {
             zone.setZoneName(zoneName);
             zone.setZoneBasePrice(zoneBasePrice);
         }
@@ -48,10 +50,11 @@ public class ZoneImpl implements ZoneService {
     public boolean deleteZone(UUID zoneId) {
 
         Zone zone = zoneRepository.findById(zoneId).orElse(null);
-        if(zone == null) {
+        if (zone == null) {
             return false;
         } else {
-            zoneRepository.deleteById(zoneId);
+            zone.setZoneIsDeleted(true);
+            zoneRepository.save(zone);
             return true;
         }
     }

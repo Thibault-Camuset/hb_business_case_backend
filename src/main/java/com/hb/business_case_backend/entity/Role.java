@@ -29,7 +29,9 @@ public class Role {
     @Column(name = "ROL_role_description", nullable = false, length = 255)
     private String roleDescription;
 
-    public Role(String roleName, String roleDescription) {
+    public Role(
+            String roleName,
+            String roleDescription) {
         this.roleName = roleName;
         this.roleDescription = roleDescription;
     }

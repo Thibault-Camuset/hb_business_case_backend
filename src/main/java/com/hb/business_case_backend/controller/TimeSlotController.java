@@ -23,14 +23,24 @@ public class TimeSlotController {
     }
 
     @PostMapping("/{timeSlotName}/{timeSlotStart}/{timeSlotEnd}/{timeSlotPriceMultiplier}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public TimeSlot timeSlotPost(@PathVariable String timeSlotName, @PathVariable Date timeSlotStart, @PathVariable Date timeSlotEnd, @PathVariable Double timeSlotPriceMultiplier) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public TimeSlot timeSlotPost(
+            @PathVariable String timeSlotName,
+            @PathVariable Date timeSlotStart,
+            @PathVariable Date timeSlotEnd,
+            @PathVariable Double timeSlotPriceMultiplier) {
         return timeSlotService.createTimeSlot(timeSlotName, timeSlotStart, timeSlotEnd, timeSlotPriceMultiplier);
     }
 
     @PatchMapping("/{timeSlotId}/{timeSlotName}/{timeSlotStart}/{timeSlotEnd}/{timeSlotPriceMultiplier}")
-    public TimeSlot timeSlotPatch(@PathVariable UUID timeSlotId, @PathVariable String timeSlotName, @PathVariable Date timeSlotStart, @PathVariable Date timeSlotEnd, @PathVariable Double timeSlotPriceMultiplier) {
-        return timeSlotService.updateTimeSlot(timeSlotId, timeSlotName, timeSlotStart, timeSlotEnd, timeSlotPriceMultiplier);
+    public TimeSlot timeSlotPatch(
+            @PathVariable UUID timeSlotId,
+            @PathVariable String timeSlotName,
+            @PathVariable Date timeSlotStart,
+            @PathVariable Date timeSlotEnd,
+            @PathVariable Double timeSlotPriceMultiplier) {
+        return timeSlotService.updateTimeSlot(timeSlotId, timeSlotName, timeSlotStart, timeSlotEnd,
+                timeSlotPriceMultiplier);
     }
 
     @DeleteMapping("/{timeSlotId}")

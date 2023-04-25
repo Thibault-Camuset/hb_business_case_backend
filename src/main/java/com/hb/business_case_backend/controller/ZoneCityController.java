@@ -24,13 +24,18 @@ public class ZoneCityController {
     }
 
     @PostMapping("/{zone}/{city}")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public ZoneCity zoneCityPost( @PathVariable Zone zone, @PathVariable City city) {
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ZoneCity zoneCityPost(
+            @PathVariable Zone zone,
+            @PathVariable City city) {
         return zoneCityService.createZoneCity(zone, city);
     }
 
     @PatchMapping("/{zoneCityId}/{zone}/{city}")
-    public ZoneCity zoneCityPatch(@PathVariable UUID zoneCityId, @PathVariable Zone zone, @PathVariable City city) {
+    public ZoneCity zoneCityPatch(
+            @PathVariable UUID zoneCityId,
+            @PathVariable Zone zone,
+            @PathVariable City city) {
         return zoneCityService.updateZoneCity(zoneCityId, zone, city);
     }
 

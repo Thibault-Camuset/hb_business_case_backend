@@ -29,7 +29,9 @@ public class CountryImpl implements CountryService {
 
     // Méthode pour ajouter un nouveau pays
     @Override
-    public Country createCountry(String id, String countryName) {
+    public Country createCountry(
+            String id,
+            String countryName) {
 
         Country country = new Country(id, countryName);
         return countryRepository.save(country);
@@ -38,11 +40,13 @@ public class CountryImpl implements CountryService {
 
     // Méthode pour modifier le nom d'un pays
     @Override
-    public Country updateCountry(String id, String countryName) {
+    public Country updateCountry(
+            String id,
+            String countryName) {
 
         Country country = countryRepository.findById(id).orElse(null);
 
-        if(country != null) {
+        if (country != null) {
             country.setCountryName(countryName);
         }
 
@@ -56,7 +60,7 @@ public class CountryImpl implements CountryService {
 
         Country country = countryRepository.findById(id).orElse(null);
 
-        if(country == null) {
+        if (country == null) {
             return false;
         } else {
             countryRepository.deleteById(id);

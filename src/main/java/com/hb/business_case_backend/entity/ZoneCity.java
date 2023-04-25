@@ -29,7 +29,9 @@ public class ZoneCity {
     @ManyToOne
     private City city;
 
-    public ZoneCity(Zone zone, City city) {
+    public ZoneCity(
+            Zone zone,
+            City city) {
         this.zone = zone;
         this.city = city;
     }

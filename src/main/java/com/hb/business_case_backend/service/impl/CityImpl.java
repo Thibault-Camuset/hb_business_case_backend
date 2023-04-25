@@ -32,14 +32,21 @@ public class CityImpl implements CityService {
     }
 
     @Override
-    public City createCity(String postalCode, String cityName, Country country) {
+    public City createCity(
+            String postalCode,
+            String cityName,
+            Country country) {
 
         City city = new City(postalCode, cityName, country);
         return cityRepository.save(city);
     }
 
     @Override
-    public City updateCity(UUID cityId, String postalCode, String cityName, Country country) {
+    public City updateCity(
+            UUID cityId,
+            String postalCode,
+            String cityName,
+            Country country) {
 
         City city = cityRepository.findById(cityId).orElse(null);
         if (city != null) {

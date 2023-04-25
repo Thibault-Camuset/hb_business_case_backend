@@ -37,7 +37,11 @@ public class TimeSlot {
     @Column(name = "TMS_time_slot_price_multiplier", nullable = false, length = 255)
     private Double timeSlotPriceMultiplier;
 
-    public TimeSlot(String timeSlotName, Date timeSlotStart, Date timeSlotEnd, Double timeSlotPriceMultiplier) {
+    public TimeSlot(
+            String timeSlotName,
+            Date timeSlotStart,
+            Date timeSlotEnd,
+            Double timeSlotPriceMultiplier) {
         this.timeSlotName = timeSlotName;
         this.timeSlotStart = timeSlotStart;
         this.timeSlotEnd = timeSlotEnd;

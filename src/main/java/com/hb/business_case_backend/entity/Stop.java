@@ -31,7 +31,10 @@ public class Stop {
     @Column(name = "STP_raspberryIp", nullable = false)
     private String raspberryIp;
 
-    public Stop(String stopName, Zone zone, String raspberryIp) {
+    public Stop(
+            String stopName,
+            Zone zone,
+            String raspberryIp) {
         this.stopName = stopName;
         this.zone = zone;
         this.raspberryIp = raspberryIp;

@@ -4,6 +4,7 @@ import com.hb.business_case_backend.entity.City;
 import com.hb.business_case_backend.entity.Role;
 import com.hb.business_case_backend.entity.User;
 import com.hb.business_case_backend.repository.UserRepository;
+import com.hb.business_case_backend.service.RoleService;
 import com.hb.business_case_backend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.UUID;
 public class UserImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final RoleService roleService;
 
     @Override
     public List<User> getUsers() {
@@ -35,7 +37,9 @@ public class UserImpl implements UserService {
     @Override
     public User createUser(String userEmail, String userPassword, String userFirstName, String userLastName,
             String userPhone, String userAddress, City city, Role role) {
-        User user = new User(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress, city, role);
+        Role roleUser = roleService.getRoleByRoleName("USER");
+        User user = new User(userEmail, userPassword, userFirstName, userLastName, userPhone, userAddress, city,
+                roleUser);
         return userRepository.save(user);
     }
 
